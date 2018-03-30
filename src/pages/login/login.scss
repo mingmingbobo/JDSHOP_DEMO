@@ -1,0 +1,43 @@
+
+.login_list{
+    .login_label{
+        font-weight: bold;
+        color: black;
+    }
+
+    .list_end{
+        span{
+            font-size: 14px;
+            color: #666;
+        }
+        
+    }
+}
+
+//.login_button_div{
+    //background: purple;
+    //width: 100%;
+    .button_div{
+        display: flex;
+        width: 100%;
+        height: 44px;
+        .login_button{
+            flex: 0.8;
+            margin-left:auto;
+            margin-right: auto; 
+            background: red;
+            color:white;
+            font-size: 14px;
+        }
+    }
+    
+//}
+
+// .button-md {
+//     width: 70%;
+//     margin-left:auto!important;
+//     margin-right: auto!important;
+// }
+
+
+

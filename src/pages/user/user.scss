@@ -1,0 +1,26 @@
+
+.login{
+    padding: 10px;
+    .userimg{
+        text-align: center;
+        .user_img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+        }
+    }
+
+    .login_reg{
+        text-align: center;
+    }
+}
+
+
+.user_list{
+    margin: 0px !important;
+}
+
+
+ion-item-divider{
+    min-height: 3px;
+}

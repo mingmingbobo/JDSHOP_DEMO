@@ -1,0 +1,50 @@
+<!--
+  Generated template for the CartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>购物车</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<dl class="cart_list">
+  <dt>
+    <ion-checkbox color="danger"></ion-checkbox>
+    <img class="product_img" src="assets/imgs/03.jpg"/>
+  </dt>
+  <dd>
+    <h2 class="cart_title">这是一个商品标题这是一个商品标题这是一个商品标</h2>
+    <div class="cart_info">
+      <div class="cart_price">100.00</div>
+      <div class="cart_num">
+        <div class="input_left">-</div>
+        <div class="input_center">
+          <input class="cart_number" type="text" readonly="readonly" value="1" name="num" id="num"/>
+        </div>
+        <div class="input_right">+</div>
+      </div>
+    </div>
+  </dd>
+</dl>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <div class="all_price">
+          <ion-checkbox class="cart_checkall" disabled="false" color="danger"></ion-checkbox>
+          全选 <strong>合计：200</strong>
+      </div>
+      <ion-buttons end>
+        <button ion-button  color="danger">
+          去结算
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>

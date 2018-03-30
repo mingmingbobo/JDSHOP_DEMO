@@ -1,0 +1,50 @@
+.hotSearchList{
+    .search_title{
+        font-size: 16px;
+        margin-left: 15px;
+    }
+
+    .product_span{
+        background:#eee;
+        border-radius: 3px;
+        padding: 2px 5px 2px 5px;
+        margin-left: 10px;
+    }
+}
+
+.grayLine{
+    background: #eee;
+    margin-top: 15px;
+    height: 10px;
+}
+
+
+.history{
+    .search_title{
+        font-size: 16px; 
+        margin-left: 15px;
+    }
+
+    .history_list{
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+
+.searchbar-md .searchbar-input {
+    border-radius: 18px;
+    background: #eee;
+    height: 36px;
+}
+
+.list_content{
+    .sub_header{
+        padding: 10px 10px 10px 10px;
+        display: flex;
+    }
+    div{
+        flex: 1;
+    }
+}
+
