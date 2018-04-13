@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { CartPage } from '../pages/cart/cart';
 import { CategorysPage } from '../pages/categorys/categorys';
@@ -13,9 +14,15 @@ import { RegisterPage } from '../pages/register/register';
 import { RegistersignPage } from '../pages/registersign/registersign';
 import { RegisterpasswordPage } from '../pages/registerpassword/registerpassword';
 import { SearchPage } from '../pages/search/search';
+import { ProductlistPage } from '../pages/productlist/productlist';
+import { ProductcontentPage } from '../pages/productcontent/productcontent';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ConfigProvider } from '../providers/config/config';
+import { HttpServicesProvider } from '../providers/http-services/http-services';
+import { StorageProvider } from '../providers/storage/storage';
 
 @NgModule({
   declarations: [
@@ -29,9 +36,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RegisterPage,
     RegistersignPage,
     RegisterpasswordPage,
-    SearchPage
+    SearchPage,
+    ProductlistPage,
+    ProductcontentPage
   ],
   imports: [
+    HttpModule, 
+    JsonpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp,{
       tabsHideOnSubPages: 'true'         //隐藏全部子页面tabs
@@ -49,12 +60,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RegisterPage,
     RegistersignPage,
     RegisterpasswordPage,
-    SearchPage
+    SearchPage,
+    ProductlistPage,
+    ProductcontentPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ConfigProvider,
+    HttpServicesProvider,
+    StorageProvider,
+    StorageProvider
   ]
 })
 export class AppModule {}

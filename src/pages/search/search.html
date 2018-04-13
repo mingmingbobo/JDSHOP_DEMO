@@ -8,9 +8,9 @@
 
   <!-- <ion-navbar hideBackButton="true"> -->
  <ion-navbar>
-      <ion-searchbar class="product_seach_bar"></ion-searchbar>
+      <ion-searchbar class="product_seach_bar" [(ngModel)]="keywords"></ion-searchbar>
       <ion-buttons end>
-          <button ion-button (tap)="flag=!flag">
+          <button ion-button (tap)="getSerchList()">
            搜索
           </button>
         </ion-buttons>
@@ -38,20 +38,11 @@
 
   </div>
 
-  <div class="history">
+  <div class="history" *ngIf="historyList.length>0">
       <h3 class="search_title">历史搜索</h3>
       <ion-list class="history_list">
-        <ion-item>
-          男装
-        </ion-item>
-        <ion-item>
-          女装
-        </ion-item>
-        <ion-item>
-          汽车
-        </ion-item>
-        <ion-item>
-          美容
+        <ion-item  *ngFor="let item of historyList" (press)="removeHistory(item)" (tap)="goSearch(item)">
+          {{item}}
         </ion-item>
       </ion-list>
   </div>
@@ -64,15 +55,21 @@
       <div>销量</div>
       <div>价格</div>
     </div>
-  <ion-list>
+  <ion-list inset class="p_list">
     <ion-item *ngFor="let item of productList">
       <ion-thumbnail item-left>
-        <img src="{{item.pic}}" />
+        <img src="{{config.apiUrl+item.s_pic}}" />
       </ion-thumbnail>
       <h3>{{item.title}}</h3>
-      <p>价格:123</p>
+      <div class="d_price">
+          <span class="p_price">¥{{item.price}}</span>    <span class="p_old_price">¥{{item.old_price}}</span>
+      </div>
     </ion-item>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doLoadMore($event)" *ngIf="hasData">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
 </div>
 

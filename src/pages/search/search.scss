@@ -40,11 +40,18 @@
 
 .list_content{
     .sub_header{
-        padding: 10px 10px 10px 10px;
+        height: 40px;
+        margin: 20px 0px 0px 0px;
         display: flex;
+        text-align: center;
+        border-bottom: 1px solid #eee;
     }
     div{
         flex: 1;
+    }
+
+    .p_list{
+        margin: 0px;
     }
 }
 

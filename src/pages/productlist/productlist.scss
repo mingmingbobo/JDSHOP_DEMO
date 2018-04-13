@@ -1,0 +1,38 @@
+
+.list_content{
+    .sub_header{
+        height: 40px;
+        margin: 20px 0px 0px 0px;
+        display: flex;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+    .z .x .j{
+        flex: 1;
+    }
+
+    .p_list{
+        margin: 0px;
+
+        ion-label {
+            word-wrap: break-word;
+            white-space: inherit;
+        }
+
+        .p_title{
+            width: 100%;
+        }
+        .d_price{
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .p_price{
+            color: red;
+        }
+        .p_old_price{
+            text-decoration:line-through black;
+        }
+    }
+}
+

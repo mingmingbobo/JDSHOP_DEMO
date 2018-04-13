@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {SearchPage} from '../search/search';
+import { SearchPage } from '../search/search';
+import { ProductcontentPage } from '../productcontent/productcontent';
+
+import { HttpServicesProvider } from '../../providers/http-services/http-services';
+
+import { ConfigProvider } from '../../providers/config/config';
 
 @Component({
   selector: 'page-home',
@@ -8,22 +13,51 @@ import {SearchPage} from '../search/search';
 })
 export class HomePage {
 
-  public recList = [];
-  public recListWidth='';
+  public productcontentPage = ProductcontentPage;
 
-  constructor(public navCtrl: NavController) {
+  public focusList = [];
+  public bestList = [];
+  public hotList = [];
+  public bestListWidth = '';
 
-    for(let i=0 ;i<10;i++) {
-      this.recList.push({
-        pic : 'assets/imgs/0'+i+'.jpg',
-        title : '第'+i+'条'
-      })
-    }
-    this.recListWidth = this.recList.length*95+'px';
+  constructor(public navCtrl: NavController, public config: ConfigProvider,public httpServices: HttpServicesProvider) {
+    this.getFocus();
+    this.getBestList();
+    this.getHotList();
   }
 
-  goSearchPage(){
-   this.navCtrl.push(SearchPage); 
+  goSearchPage() {
+    this.navCtrl.push(SearchPage);
   }
 
+  getFocus(){
+    var that = this;
+    this.httpServices.requestData('api/Focus',function(data){
+      that.focusList = data.result;
+      //console.log(data);
+      //console.log(data.result);
+       
+    });
+  }
+
+  getBestList(){
+    var that = this;
+    this.httpServices.requestData('api/plist?is_best=1',function(data){
+      that.bestList = data.result;
+      //console.log(data);
+      //console.log(data.result);
+      that.bestListWidth = that.bestList.length * 92 + 'px';
+    });
+  }
+
+  getHotList(){
+    //http://39.108.159.135/api/plist?is_hot=1
+    var that = this;
+    this.httpServices.requestData('api/plist?is_hot=1',function(data){
+      that.hotList = data.result;
+      //console.log(data);
+      //console.log(data.result);
+      //that.bestListWidth = that.bestList.length * 92 + 'px';
+    });
+  }
 }

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>分类</ion-title>
+    <ion-searchbar (tap)="goSearchPage($event)"></ion-searchbar>
   </ion-navbar>
 
 </ion-header>
@@ -18,22 +18,18 @@
   <div class="cate_content">
     <div class="cate_left">
       <ion-list>
-        <ion-item *ngFor="let item of cateList">
-          <h3>{{item}}</h3>
+        <ion-item *ngFor="let item of leftCate" (tap)="getRightCate(item._id)">
+          <h3>{{item.title}}</h3>
         </ion-item>
 
       </ion-list>
     </div>
     <div class="cate_right">
       <ion-row>
-        <ion-col col-4 *ngFor="let item of recList">
-          <img src="{{item.pic}}">
+        <ion-col col-4 *ngFor="let item of rightCate" [navPush]='productlistPage' [navParams]="{'cid':item._id}">
+          <img src="{{config.apiUrl+item.pic}}">
           <p>{{item.title}}</p>
         </ion-col>
-        <ion-col col-4 *ngFor="let item of recList">
-            <img src="{{item.pic}}">
-            <p>{{item.title}}</p>
-          </ion-col>
       </ion-row>
     </div>
   </div>

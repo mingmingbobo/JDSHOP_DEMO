@@ -7,6 +7,10 @@
         height: 100%;
         //background: red;
         overflow-y: auto;
+
+        .ion-label{
+            font-size: 14px;
+        }
     }
 
     .cate_right{
@@ -14,6 +18,17 @@
         flex: 1;
        // background: blue;
         overflow-y: auto;
+
+        .ion-label{
+            font-size: 14px;
+        }
+
+        .col{
+            border: 0.5px solid #eee;
+            p{
+                text-align: center;
+            }
+        }
     }
 
 }

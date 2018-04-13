@@ -1,0 +1,107 @@
+<!--
+  Generated template for the ProductcontentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+       <ion-segment [(ngModel)]="PTabs">
+            <ion-segment-button value="PContent">
+                商品
+            </ion-segment-button>
+            <ion-segment-button value="PDetail">
+                详情
+            </ion-segment-button>
+            <ion-segment-button value="PComment">
+                评论
+              </ion-segment-button>
+          </ion-segment>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <div [ngSwitch]="PTabs">
+        <div class="p_content" *ngSwitchCase="'PContent'">
+          <div class="p_img">
+            <img src="{{config.apiUrl+prd.pic}}"/>
+          </div>
+
+          <div class="p_info">
+            <div class="p_des">
+                <h2>{{prd.title}}</h2>
+                <p>{{prd.sub_title}}</p>
+            </div>
+
+            <div class="p_price">
+              <span class="now_price">特价：<span class="price">¥{{prd.price}}</span></span> 原价：<span class="old_price">¥{{prd.old_price}}</span>
+            </div>
+          </div>
+
+          <div class="p_att">
+            <div class="p_color">
+              <strong>颜色：</strong>
+              <span>白色</span>
+              <span>黄色</span>
+              <span>蓝色</span>
+              <span>红色</span>
+              <span>黑色</span>
+              <span>绿色</span>
+            </div>
+
+            <div class="number">
+                
+                <strong>数量:</strong>
+
+                <div class="cart_number">
+                    <div class="input_left">-</div>
+                      <div class="input_center">
+                          <input type="text"  readonly="readonly" value="1" name="num" id="num" />
+                      </div>
+                      <div class="input_right">+</div>
+                </div>
+      
+      </div>
+
+          </div>
+
+          <div class="carriage">
+              运费:免运费
+            </div>
+          
+        </div>
+      
+        <div class="p_detail" *ngSwitchCase="'PDetail'">
+         <div [innerHTML]='prd.content'></div>
+        </div>
+
+        <div class="p_comment" *ngSwitchCase="'PComment'">
+            评论
+        </div>
+      </div>
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar>
+        <div class="footer_bar">
+            <div class="cart_icon">
+              <ion-icon name="cart"></ion-icon>
+              <p>购物车</p>
+              <ion-badge color="danger">1</ion-badge>
+            </div>
+            <div class="addToCart">
+              加入购物车
+            </div>
+            <div class="buy">
+              立即购买
+            </div>
+          </div>
+    </ion-toolbar>
+
+  </ion-footer>
