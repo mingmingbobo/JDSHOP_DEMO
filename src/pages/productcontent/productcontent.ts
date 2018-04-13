@@ -23,7 +23,7 @@ export class ProductcontentPage {
 
   public prd = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public config: ConfigProvider,public httpServices: HttpServicesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public config: ConfigProvider, public httpServices: HttpServicesProvider) {
     var p_id = navParams.get('id');
     //console.log('id:'+this.p_id);
     this.getProductData(p_id);
@@ -34,12 +34,12 @@ export class ProductcontentPage {
   }
 
 
-  getProductData(id){
-    var api = 'api/pcontent?id='+id;
+  getProductData(id) {
+    var api = 'api/pcontent?id=' + id;
 
-    this.httpServices.requestData(api,(data)=>{
-      console.log('data:'+data.result);
-     this.prd = data.result;
+    this.httpServices.requestData(api, (data) => {
+      console.log('data:' + data.result);
+      this.prd = data.result;
     });
   }
 }

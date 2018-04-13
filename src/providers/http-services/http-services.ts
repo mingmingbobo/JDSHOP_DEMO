@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import {Http,Jsonp} from "@angular/http";
+import {Http,Jsonp,Headers} from "@angular/http";
 
 import 'rxjs/add/operator/map';
 
@@ -16,6 +16,8 @@ import { ConfigProvider } from '../../providers/config/config';
 */
 @Injectable()
 export class HttpServicesProvider {
+
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(public http: Http, public jsonp: Jsonp, public config: ConfigProvider) {
 
@@ -37,6 +39,15 @@ export class HttpServicesProvider {
       console.log(err);
     })
 
+  }
+
+  doPost(apiUrl, json, callback){
+    var api = this.config.apiUrl+apiUrl;
+    console.log('json:'+JSON.stringify(json));
+    this.http.post(api,JSON.stringify(json),{headers:this.headers}).subscribe(function (res){
+      //console.log('doPost res:'+res.json());
+      callback(res.json());
+    });
   }
 
 }

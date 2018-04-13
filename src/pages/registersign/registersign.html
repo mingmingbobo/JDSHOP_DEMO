@@ -22,8 +22,9 @@
     <button class="code_send_button">发送验证码</button>
     <!-- <ion-input class="mobile_input" type="text" placeholder="请输入手机号"></ion-input> -->
   </div>
+  <div class="tips_error" *ngIf="!flag">{{message}}</div>
 
-  <button class="next" [navPush]="RegisterpasswordPage">下一步</button>
+  <button class="next" (click)="goRegisterpasswordPage()">下一步</button>
   <span class="ask">遇到问题？你可以<span class="contact">联系客服</span></span>
 
 </ion-content>

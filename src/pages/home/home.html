@@ -8,8 +8,8 @@
 
   <ion-slides pager class="focus" loop="true" autoplay="3000" *ngIf="focusList.length>=1">
 
-    <ion-slide *ngFor="let item of focusList">
-      <img src="{{config.apiUrl+item.pic}}"  [navPush]="productcontentPage"/>
+    <ion-slide *ngFor="let item of focusList" >
+      <img src="{{config.apiUrl+item.pic}}"  [navPush]="productcontentPage" [navParams]="{'id':item._id}" />
     </ion-slide>
 
   </ion-slides>
@@ -19,8 +19,8 @@
   </div>
   <div class="slide_product">
     <ion-scroll scrollX="true" class="best_scroll">
-      <ul class="clearfix" [ngStyle]="{'width':bestListWidth}" [navPush]="productcontentPage">
-        <li *ngFor="let item of bestList">
+      <ul class="clearfix" [ngStyle]="{'width':bestListWidth}">
+        <li *ngFor="let item of bestList" [navPush]="productcontentPage" [navParams]="{'id':item._id}">
           <img src="{{config.apiUrl+item.s_pic}}" />
           <div class="best_pro_title">{{item.title}}</div>
           <p><span class="price">¥{{item.price}}</span><p>
