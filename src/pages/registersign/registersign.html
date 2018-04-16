@@ -18,9 +18,10 @@
     <p class="code_p">请输入{{phoneNum}}收到的验证码</p>
   </div>
   <div class="code_sent_input">
-    <input class="code_input" type="number" placeholder="请输入验证码"/>
-    <button class="code_send_button">发送验证码</button>
-    <!-- <ion-input class="mobile_input" type="text" placeholder="请输入手机号"></ion-input> -->
+    <input class="code_input" type="number" placeholder="请输入验证码" [(ngModel)]="code" value="code"/>
+    <!-- <button class="code_send_button">发送验证码</button> -->
+    <div class="code_send_button" *ngIf="showTimer">倒计时{{timeCount}}</div>
+    <div class="code_send_button" *ngIf="!showTimer" (tap)="reSend()">发送验证码</div>
   </div>
   <div class="tips_error" *ngIf="!flag">{{message}}</div>
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Config } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Config,ToastController } from 'ionic-angular';
 import { RegisterpasswordPage } from '../registerpassword/registerpassword';
 import { HttpServicesProvider } from '../../providers/http-services/http-services';
 /**
@@ -17,17 +17,21 @@ import { HttpServicesProvider } from '../../providers/http-services/http-service
 export class RegistersignPage {
   public phoneNum = '';
   public RegisterpasswordPage=RegisterpasswordPage;
-  public code = '1234';
+  public code = '';
   public flag = true;
   public message = '';
+  public showTimer = true;
+  public timeCount = 10;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public httpService:HttpServicesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public httpService:HttpServicesProvider,public toast:ToastController) {
     console.log('tel:'+navParams.get('tel'));
     this.phoneNum = navParams.get('tel');
+    this.code = navParams.get('code');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistersignPage');
+    this.doTimer();
   }
 
 doValidateCode(){
@@ -36,12 +40,42 @@ doValidateCode(){
     console.log('验证code：' + result.success + ':message:' + result.message);
     if(result.success){
       this.flag = true;
-      this.navCtrl.push(RegisterpasswordPage);
+      this.navCtrl.push(RegisterpasswordPage,{'tel':this.phoneNum,'code':this.code});
     }else{
       this.flag = false;
       this.message = result.message;
     }
   });
+}
+
+doTimer(){
+  this.showTimer = true;
+  var timer = setInterval(()=>{
+    --this.timeCount;
+    if(this.timeCount==0){
+      clearInterval(timer);
+      this.showTimer = false;
+    }
+  },1000);
+
+}
+
+reSend(){
+  var api = 'api/sendCode';
+      var json = { "tel": this.phoneNum }
+      this.httpService.doPost(api, json, (result) => {
+        // console.log('验证码：' + result.success + ':message:' + result.message);
+        // console.log(result);  
+        // this.message = result.message;
+          this.code = result.code;
+          this.doTimer();
+          let toast = this.toast.create({
+            message: result.message,
+            duration: 3000,
+            position: 'top'
+          });
+          toast.present();
+      });
 }
 
 goRegisterpasswordPage(){

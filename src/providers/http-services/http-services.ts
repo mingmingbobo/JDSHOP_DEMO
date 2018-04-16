@@ -43,7 +43,7 @@ export class HttpServicesProvider {
 
   doPost(apiUrl, json, callback){
     var api = this.config.apiUrl+apiUrl;
-    console.log('json:'+JSON.stringify(json));
+    console.log('post json:'+JSON.stringify(json));
     this.http.post(api,JSON.stringify(json),{headers:this.headers}).subscribe(function (res){
       //console.log('doPost res:'+res.json());
       callback(res.json());

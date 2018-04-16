@@ -38,6 +38,7 @@ export class RegisterPage {
       var json = { "tel": this.tel }
       this.httpService.doPost(api, json, (result) => {
         console.log('验证码：' + result.success + ':message:' + result.message);
+        console.log(result);  
         this.message = result.message;
         if (result.success) {
           this.flag = true;
@@ -48,7 +49,7 @@ export class RegisterPage {
           });
           toast.present();
 
-          this.navCtrl.push(RegistersignPage,{'tel':this.tel});
+          this.navCtrl.push(RegistersignPage,{'tel':this.tel,'code':result.code});
         } else {
           this.flag = false;
         }
