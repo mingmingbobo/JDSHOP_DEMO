@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpServicesProvider } from '../../providers/http-services/http-services';
+import { StorageProvider } from '../../providers/storage/storage';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,11 +17,40 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public userInfo = {
+    username: '',
+    password: ''
+  }
+
+  public flag = false;
+
+  public message = '';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public httpService: HttpServicesProvider, public storage: StorageProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  doLogin() {
+    console.log(this.userInfo);
+    if (!/^\d{11}$/.test(this.userInfo.username)) {
+      this.flag = true;
+      this.message = '用户名不合法';
+
+    }else if(this.userInfo.password.length<6){
+      this.flag = true;
+      this.message = '密码长度少于6位';
+    }else{
+      var api = 'api/doLogin';
+      this.httpService.doPost(api, this.userInfo, (result) => {
+        console.log(this.userInfo);
+        console.log(result);
+        this.storage.set('userinfo',result.userinfo[0]);
+        this.navCtrl.popToRoot();
+      });
+    }
   }
 
 }

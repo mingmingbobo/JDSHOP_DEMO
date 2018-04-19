@@ -16,6 +16,9 @@ import { RegisterpasswordPage } from '../pages/registerpassword/registerpassword
 import { SearchPage } from '../pages/search/search';
 import { ProductlistPage } from '../pages/productlist/productlist';
 import { ProductcontentPage } from '../pages/productcontent/productcontent';
+import { PersonalPage } from '../pages/personal/personal';
+
+
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -38,7 +41,8 @@ import { StorageProvider } from '../providers/storage/storage';
     RegisterpasswordPage,
     SearchPage,
     ProductlistPage,
-    ProductcontentPage
+    ProductcontentPage,
+    PersonalPage
   ],
   imports: [
     HttpModule, 
@@ -62,7 +66,8 @@ import { StorageProvider } from '../providers/storage/storage';
     RegisterpasswordPage,
     SearchPage,
     ProductlistPage,
-    ProductcontentPage
+    ProductcontentPage,
+    PersonalPage
   ],
   providers: [
     StatusBar,

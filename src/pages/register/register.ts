@@ -4,6 +4,7 @@ import { RegistersignPage } from '../registersign/registersign';
 
 
 import { HttpServicesProvider } from '../../providers/http-services/http-services';
+import { CartPage } from '../cart/cart';
 
 /**
  * Generated class for the RegisterPage page.

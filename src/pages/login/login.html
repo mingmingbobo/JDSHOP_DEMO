@@ -15,15 +15,19 @@
 
 <ion-content>
 
-    <ion-list inset class="login_list">
+    <ion-list  class="login_list">
         <ion-item>
           <ion-label class="login_label">账号:</ion-label>
-          <ion-input type="text" aria-placeholder="手机号/账号"></ion-input>
+          <ion-input type="text" aria-placeholder="手机号/账号" [(ngModel)]="userInfo.username"></ion-input>
         </ion-item>
       
         <ion-item>
           <ion-label class="login_label">密码:</ion-label>
-          <ion-input type="password" aria-placeholder="密码"></ion-input>
+          <ion-input type="password" aria-placeholder="密码" [(ngModel)]="userInfo.password"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="flag">
+          <div class="tips_error">{{message}}</div>
         </ion-item>
 
         <ion-item class="list_end">
@@ -33,7 +37,7 @@
       </ion-list>
       
     <div class="button_div">
-        <button class="login_button">登陆</button>
+        <button class="login_button" (click)="doLogin()">登陆</button>
     </div>
        
 </ion-content>

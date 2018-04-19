@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
+import { StorageProvider } from '../../providers/storage/storage';
+import { PersonalPage } from '../personal/personal';
 
 /**
  * Generated class for the UserPage page.
@@ -18,7 +20,17 @@ import { RegisterPage } from '../register/register';
 export class UserPage {
   public LoginPage = LoginPage;
   public RegisterPage=RegisterPage;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  public personalPage = PersonalPage
+
+  public userinfo ;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storageService:StorageProvider) {
+    
+  }
+
+  ionViewWillEnter(){
+    this.userinfo = this.storageService.get('userinfo');
   }
 
   ionViewDidLoad() {

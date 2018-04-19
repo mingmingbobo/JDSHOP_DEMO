@@ -46,14 +46,16 @@
       </div>
 
       <div class="p_att">
-        <div *ngIf="prd.attr">
-          <div class="p_color" *ngFor="let attrCate of prd.attr">
-            <strong>{{attrCate.cate}}:</strong>
-            <span *ngFor="let a of attrCate.list">
-              {{a}}
-            </span>
-
-          </div>
+        <div #myattr id="myattr">
+            <div *ngIf="prd.attr">
+                <div class="p_color" *ngFor="let attrCate of prd.attr" >
+                  <strong>{{attrCate.cate}}:</strong>
+                  <span *ngFor="let a of attrCate.list;let key = index;" [ngClass]="{'active':key==0}">
+                    {{a}}
+                  </span>
+      
+                </div>
+              </div>
         </div>
 
         <div class="number">
@@ -61,11 +63,11 @@
           <strong>数量:</strong>
 
           <div class="cart_number">
-            <div class="input_left">-</div>
+            <div class="input_left" (tap)="decNum()">-</div>
             <div class="input_center">
-              <input type="text" readonly="readonly" value="1" name="num" id="num" />
+              <input type="text" readonly="readonly" [(ngModel)]="number" name="num" id="num" />
             </div>
-            <div class="input_right">+</div>
+            <div class="input_right" (tap)="incNum()">+</div>
           </div>
 
         </div>
@@ -93,12 +95,12 @@
 <ion-footer>
   <ion-toolbar>
     <div class="footer_bar">
-      <div class="cart_icon">
+      <div class="cart_icon" (click)="goCartPage()">
         <ion-icon name="cart"></ion-icon>
         <p>购物车</p>
-        <ion-badge color="danger">1</ion-badge>
+        <ion-badge color="danger">{{cartNum}}</ion-badge>
       </div>
-      <div class="addToCart">
+      <div class="addToCart" (click)="addToCart()">
         加入购物车
       </div>
       <div class="buy">

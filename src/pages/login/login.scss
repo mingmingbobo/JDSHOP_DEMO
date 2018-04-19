@@ -1,5 +1,9 @@
 
 .login_list{
+
+    // ion-item{
+    //     margin-left:10px;
+    // }
     .login_label{
         font-weight: bold;
         color: black;
@@ -11,6 +15,10 @@
             color: #666;
         }
         
+    }
+
+    .tips_error{
+        margin-left: 0px;
     }
 }
 

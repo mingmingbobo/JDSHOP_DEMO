@@ -47,6 +47,8 @@ ion-segment{
     .p_att{
         margin-top: 10px;
         background: white;
+
+
         .p_color{
             padding-top: 10px;
             span{
@@ -60,6 +62,10 @@ ion-segment{
                 margin-right: 10px;
                 margin-bottom: 10px;
                 margin-left: 10px;
+            }
+
+            .active{
+                border: 1px solid red;
             }
         }
 
