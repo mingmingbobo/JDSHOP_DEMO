@@ -17,6 +17,7 @@ import { SearchPage } from '../pages/search/search';
 import { ProductlistPage } from '../pages/productlist/productlist';
 import { ProductcontentPage } from '../pages/productcontent/productcontent';
 import { PersonalPage } from '../pages/personal/personal';
+import { OrderPage } from '../pages/order/order';
 
 
 
@@ -42,7 +43,8 @@ import { StorageProvider } from '../providers/storage/storage';
     SearchPage,
     ProductlistPage,
     ProductcontentPage,
-    PersonalPage
+    PersonalPage,
+    OrderPage
   ],
   imports: [
     HttpModule, 
@@ -67,7 +69,8 @@ import { StorageProvider } from '../providers/storage/storage';
     SearchPage,
     ProductlistPage,
     ProductcontentPage,
-    PersonalPage
+    PersonalPage,
+    OrderPage
   ],
   providers: [
     StatusBar,

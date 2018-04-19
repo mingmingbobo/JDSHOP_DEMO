@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage/storage';
 import { ConfigProvider } from '../../providers/config/config';
-import { flatten } from '@angular/compiler';
+// import { flatten } from '@angular/compiler';
+import { OrderPage } from '../../pages/order/order';
 
 
 /**
@@ -113,6 +114,11 @@ export class CartPage {
           tempArr.push(this.cartsList[index]);
         }
       }
+    }
+
+    if(tempArr){
+      this.storage.set('order_data',tempArr);
+      this.navCtrl.push(OrderPage);
     }
 
   }

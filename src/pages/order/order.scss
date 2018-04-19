@@ -1,0 +1,70 @@
+.order{
+
+    background: #eee;
+
+    .address_list{
+        .nologin{
+           text-align: center;
+        }
+    }
+
+    .product_list{
+        h2{
+            font-size: 16px;
+        }
+        .count{
+            float: right;
+        }
+
+       .submit_info{
+        .order_price{
+           // color:#666;
+            span{
+                float: right;
+                color: red;
+            }
+        }
+
+        .comment{
+            width: 100%;
+            text-align: center;
+            input{
+                border: 2px solid gray;
+                width: 95%;
+                height: 60px;
+            }
+        }
+        }
+    }
+
+    .list-ios {
+        padding: 0px;
+        margin: -1px 0 10px;
+    }
+
+    ion-item-divider{
+        height: 15px;
+        //color:#666;
+    }
+}
+
+.order_footer{
+    display: flex;
+
+    .buy_order{
+        background: red;
+        color: white;
+        text-align: center;
+        width: 100px;
+        height: 44px;
+        line-height: 44px;
+    }
+    span{
+        flex: 1;
+        text-align: center;
+        height: 44px;
+        line-height: 44px;
+        color: red;
+        display: inline-block;
+    }
+}
