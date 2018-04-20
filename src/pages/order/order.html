@@ -80,7 +80,7 @@
               <span>¥{{totalPrice}}</span>
             </li>
             <li>立减
-              <span>-¥{{-discount}}</span>
+              <span>-¥{{discount}}</span>
             </li>
             <li>运费
               <span>+¥{{freight}}</span>
@@ -103,7 +103,7 @@
 <ion-footer>
   <ion-toolbar>
     <div class="order_footer">
-      <span>实付款： ¥{{totalPrice}}</span>
+      <span>实付款： ¥{{disTotalPrice}}</span>
       <div class="buy_order" (tap)="goPayment()">
         立即下单
       </div>

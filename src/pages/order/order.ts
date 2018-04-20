@@ -31,6 +31,8 @@ export class OrderPage {
 
   public totalPrice = 0;
 
+  public disTotalPrice = 0;
+
   public comment = '';
 
   public loginPage = LoginPage;
@@ -39,13 +41,15 @@ export class OrderPage {
   public addaddressPage = AddaddressPage;
 
   //打折
-  public discount = -5;
+  public discount = 0;
 
   //运费
-  public freight = 15;
+  public freight = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: StorageProvider, public config: ConfigProvider, public toolsP: ToolsProvider, public httpservice: HttpServicesProvider) {
     // console.log(this.userInfo);
+    this.discount = 5;
+    this.freight = 15;
   }
 
   ionViewDidLoad() {
@@ -58,7 +62,7 @@ export class OrderPage {
     if (this.userInfo) {
       this.getDefaultAddress();
     }
-    this.sumPrice();
+    this.sumOrderPrice();
   }
 
   //获取默认收货地址
@@ -86,7 +90,7 @@ export class OrderPage {
 
   }
 
-  sumPrice() {
+  sumOrderPrice() {
     var temPrice = 0;
 
     for (let index = 0; index < this.orderList.length; index++) {
@@ -95,7 +99,8 @@ export class OrderPage {
       }
     }
 
-    this.totalPrice = temPrice+this.discount+this.freight;
+    this.disTotalPrice = temPrice+this.freight-this.discount;
+    this.totalPrice = temPrice;
   }
 
   //下单
