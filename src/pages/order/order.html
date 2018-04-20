@@ -77,20 +77,20 @@
         <ion-item class="order_price">
           <ul>
             <li>商品总金额
-              <span>¥124214</span>
+              <span>¥{{totalPrice}}</span>
             </li>
             <li>立减
-              <span>-¥5</span>
+              <span>-¥{{-discount}}</span>
             </li>
             <li>运费
-              <span>+¥0</span>
+              <span>+¥{{freight}}</span>
             </li>
           </ul>
         </ion-item>
         <ion-item-divider color="light">
         </ion-item-divider>
         <ion-item class="comment">
-          <input type="text" placeholder="选填:给商家留言45字以内" />
+          <input type="text" placeholder="选填:给商家留言45字以内" [(ngModel)]="comment"/>
         </ion-item>
       </ion-list>
 
@@ -103,8 +103,8 @@
 <ion-footer>
   <ion-toolbar>
     <div class="order_footer">
-      <span>实付款： ¥8888</span>
-      <div class="buy_order">
+      <span>实付款： ¥{{totalPrice}}</span>
+      <div class="buy_order" (tap)="goPayment()">
         立即下单
       </div>
     </div>

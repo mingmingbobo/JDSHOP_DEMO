@@ -21,6 +21,7 @@ import { OrderPage } from '../pages/order/order';
 import { AddressPage } from '../pages/address/address';
 import { AddaddressPage } from '../pages/addaddress/addaddress';
 import { EditAddressPage } from '../pages/edit-address/edit-address';
+import { PaymentPage } from '../pages/payment/payment';
 
 
 
@@ -51,7 +52,8 @@ import { ToolsProvider } from '../providers/tools/tools';
     OrderPage,
     AddressPage,
     AddaddressPage,
-    EditAddressPage
+    EditAddressPage,
+    PaymentPage
   ],
   imports: [
     HttpModule, 
@@ -80,7 +82,8 @@ import { ToolsProvider } from '../providers/tools/tools';
     OrderPage,
     AddressPage,
     AddaddressPage,
-    EditAddressPage
+    EditAddressPage,
+    PaymentPage
   ],
   providers: [
     StatusBar,
