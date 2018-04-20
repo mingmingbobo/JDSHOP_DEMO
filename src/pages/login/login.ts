@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpServicesProvider } from '../../providers/http-services/http-services';
 import { StorageProvider } from '../../providers/storage/storage';
+import { OrderPage } from '../../pages/order/order';
 
 /**
  * Generated class for the LoginPage page.
@@ -26,7 +27,10 @@ export class LoginPage {
 
   public message = '';
 
+  public history = '';
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpService: HttpServicesProvider, public storage: StorageProvider) {
+    this.history = navParams.get('history');
   }
 
   ionViewDidLoad() {
@@ -48,7 +52,11 @@ export class LoginPage {
         console.log(this.userInfo);
         console.log(result);
         this.storage.set('userinfo',result.userinfo[0]);
-        this.navCtrl.popToRoot();
+        if(this.history=='order'){
+          this.navCtrl.push(OrderPage);
+        }else{
+          this.navCtrl.popToRoot();
+        }
       });
     }
   }

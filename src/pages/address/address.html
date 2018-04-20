@@ -7,12 +7,40 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>address</ion-title>
+    <ion-title>收货地址</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+  <ion-list class="address_list">
+    <ion-item *ngFor="let item of addressList;let key = index">
+        <button ion-button clear item-start icon-only  *ngIf="item.default_address">
+            <ion-icon name="ios-checkmark" color="danger"></ion-icon>
+          </button>
+      <div class="tap" (tap)="checkAddress(item._id)" (press)="deleteAddress(key,item._id)">
+      <h2>
+        <span class="name">{{item.name}}</span>
+        <span class="tel">{{item.phone}}</span>
+      </h2>
+      <p>{{item.address}}</p>
+    </div>
+      <button ion-button clear item-end icon-only (tap)="editAddress(item)">
+        <ion-icon name="ios-create-outline"></ion-icon>
+      </button>
+
+    </ion-item>
+
+  </ion-list>
+
+  
 
 </ion-content>
+
+<ion-footer class="footer">
+<ion-toolbar>
+    <button ion-button color="danger" class="addButton" [navPush]="addaddressPage">+增加</button>
+</ion-toolbar>
+</ion-footer>

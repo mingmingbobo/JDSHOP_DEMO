@@ -18,6 +18,9 @@ import { ProductlistPage } from '../pages/productlist/productlist';
 import { ProductcontentPage } from '../pages/productcontent/productcontent';
 import { PersonalPage } from '../pages/personal/personal';
 import { OrderPage } from '../pages/order/order';
+import { AddressPage } from '../pages/address/address';
+import { AddaddressPage } from '../pages/addaddress/addaddress';
+import { EditAddressPage } from '../pages/edit-address/edit-address';
 
 
 
@@ -27,6 +30,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ConfigProvider } from '../providers/config/config';
 import { HttpServicesProvider } from '../providers/http-services/http-services';
 import { StorageProvider } from '../providers/storage/storage';
+import { ToolsProvider } from '../providers/tools/tools';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,10 @@ import { StorageProvider } from '../providers/storage/storage';
     ProductlistPage,
     ProductcontentPage,
     PersonalPage,
-    OrderPage
+    OrderPage,
+    AddressPage,
+    AddaddressPage,
+    EditAddressPage
   ],
   imports: [
     HttpModule, 
@@ -70,7 +77,10 @@ import { StorageProvider } from '../providers/storage/storage';
     ProductlistPage,
     ProductcontentPage,
     PersonalPage,
-    OrderPage
+    OrderPage,
+    AddressPage,
+    AddaddressPage,
+    EditAddressPage
   ],
   providers: [
     StatusBar,
@@ -79,7 +89,8 @@ import { StorageProvider } from '../providers/storage/storage';
     ConfigProvider,
     HttpServicesProvider,
     StorageProvider,
-    StorageProvider
+    StorageProvider,
+    ToolsProvider
   ]
 })
 export class AppModule {}

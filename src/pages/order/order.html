@@ -16,13 +16,26 @@
 <ion-content>
   <div class="order">
     <div class="address_list">
-      <ion-list *ngIf="userInfo">
-        <ion-item>
-          <ion-icon name="ios-pin-outline" item-start></ion-icon>
-          请添加您的收货地址
-          <ion-icon name="ios-arrow-forward" item-end></ion-icon>
-        </ion-item>
-      </ion-list>
+      <div *ngIf="userInfo && !address">
+        <ion-list>
+          <ion-item [navPush]="addaddressPage">
+            <ion-icon name="ios-pin-outline" item-start></ion-icon>
+            请添加您的收货地址
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div *ngIf="userInfo && address">
+        <ion-list>
+          <ion-item [navPush]='addressPage'>
+            <h2>{{address.name}} {{address.phone}}</h2>
+            <p>{{address.address}}</p>
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+          </ion-item>
+        </ion-list>
+      </div>
+
 
       <ion-list *ngIf="!userInfo">
         <ion-item class="nologin">
